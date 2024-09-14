@@ -32,7 +32,7 @@ void setup() {
 
   defaultScene = new DefaultScene();
   defaultScene->begin();
-  SceneManager::getInstance().activateScene(defaultScene);
+  defaultScene->show();
 }
 
 void loop() {

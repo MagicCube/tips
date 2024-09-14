@@ -16,6 +16,8 @@ class Scene : public Updatable {
 
   virtual void init();
 
+  virtual void show();
+
   virtual void update() {};
 
   void activate() { this->onActivate(); }

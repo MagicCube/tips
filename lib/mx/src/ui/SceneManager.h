@@ -4,21 +4,16 @@
 
 class SceneManager {
  public:
-  static SceneManager& getInstance() {
-    static SceneManager instance;
-    return instance;
-  }
-
-  Scene* getActiveScene() { return _activeScene; }
-  void activateScene(Scene* scene);
-  void deactivateScene();
+  static Scene* getActiveScene() { return _activeScene; }
+  static void activateScene(Scene* scene);
+  static void deactivateScene();
 
  private:
-  SceneManager() : _activeScene(nullptr) {}
+  SceneManager() {}
   ~SceneManager() {}
 
   SceneManager(const SceneManager&) = delete;
   SceneManager& operator=(const SceneManager&) = delete;
 
-  Scene* _activeScene;
+  static Scene* _activeScene;
 };
