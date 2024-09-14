@@ -19,15 +19,6 @@
 TouchDisplay display;
 DefaultScene *defaultScene = nullptr;
 
-// To keep the serial port always alive
-long __lastWakeUpTime = 0;
-void wakeUp() {
-  if (millis() - __lastWakeUpTime > 1000) {
-    __lastWakeUpTime = millis();
-    Serial.println(".");
-  }
-}
-
 void initDrivers() {
   lv_st77916_init();
   lv_cst816_init();
@@ -37,6 +28,7 @@ void setup() {
   delay(200);
 
   Serial.begin(115200);
+  Serial.println("Tips is starting...");
 
   initDrivers();
 
@@ -46,10 +38,8 @@ void setup() {
   defaultScene = new DefaultScene();
   defaultScene->begin();
   defaultScene->show();
+
+  Serial.println("Tips is now started");
 }
 
-void loop() {
-  display.update();
-
-  wakeUp();
-}
+void loop() { display.update(); }
