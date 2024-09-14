@@ -42,60 +42,6 @@ IRAM_ATTR bool onRefreshFinishCallback(void *user_data) {
   return false;
 }
 
-void setRotation(uint8_t rot) {
-  if (rot > 3) return;
-  if (lcd == NULL || touch == NULL) return;
-
-  switch (rot) {
-    case 1:  // 顺时针90度
-      lcd->swapXY(true);
-      lcd->mirrorX(true);
-      lcd->mirrorY(false);
-      touch->swapXY(true);
-      touch->mirrorX(true);
-      touch->mirrorY(false);
-      break;
-    case 2:
-      lcd->swapXY(false);
-      lcd->mirrorX(true);
-      lcd->mirrorY(true);
-      touch->swapXY(false);
-      touch->mirrorX(true);
-      touch->mirrorY(true);
-      break;
-    case 3:
-      lcd->swapXY(true);
-      lcd->mirrorX(false);
-      lcd->mirrorY(true);
-      touch->swapXY(true);
-      touch->mirrorX(false);
-      touch->mirrorY(true);
-      break;
-    default:
-      lcd->swapXY(false);
-      lcd->mirrorX(false);
-      lcd->mirrorY(false);
-      touch->swapXY(false);
-      touch->mirrorX(false);
-      touch->mirrorY(false);
-      break;
-  }
-}
-
-void screen_switch(bool on) {
-  if (NULL == backlight) return;
-  if (on)
-    backlight->on();
-  else
-    backlight->off();
-}
-
-// 输入值为0-100
-void set_brightness(uint8_t bri) {
-  if (NULL == backlight) return;
-  backlight->setBrightness(bri);
-}
-
 static void touchpad_read(lv_indev_drv_t *indev_drv, lv_indev_data_t *data) {
   ESP_PanelTouch *tp = (ESP_PanelTouch *)indev_drv->user_data;
   ESP_PanelTouchPoint point;
@@ -172,10 +118,7 @@ void scr_lvgl_init() {
   lcd->begin();
 
   lcd->invertColor(true);
-  setRotation(1);  // 设置屏幕方向
   lcd->displayOn();
-
-  screen_switch(true);
 
   size_t lv_cache_rows = 72;
 
