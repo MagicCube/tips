@@ -31,6 +31,7 @@ void setup() {
   display.setBrightness(20);
 
   defaultScene = new DefaultScene();
+  defaultScene->begin();
   SceneManager::getInstance().activateScene(defaultScene);
 }
 

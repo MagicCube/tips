@@ -10,6 +10,8 @@ class DefaultScene : public Scene {
 
  public:
   void init() override {
+    Scene::init();
+
     lv_obj_clear_flag(this->root, LV_OBJ_FLAG_SCROLLABLE);
     lv_obj_set_flex_flow(this->root, LV_FLEX_FLOW_COLUMN);
 
@@ -36,6 +38,8 @@ class DefaultScene : public Scene {
   }
 
   void update() override {
+    Scene::update();
+
     if (this->initialized) {
       // lv_label_set_text(_speedLabel,
       //                   timeClient.getFormattedTime().substring(0,
@@ -47,7 +51,7 @@ class DefaultScene : public Scene {
   void _initSpeedLabel(lv_obj_t* parent) {
     _speedLabel = lv_label_create(parent);
 
-    lv_label_set_text(_speedLabel, "00:00");
+    lv_label_set_text(_speedLabel, "--:00");
 
     static lv_style_t style;
     lv_style_init(&style);

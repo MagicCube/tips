@@ -14,15 +14,17 @@ class Scene : public Updatable {
 
   virtual void begin();
 
-  virtual void init() = 0;
+  virtual void init();
 
-  virtual void update() = 0;
+  virtual void update() {};
 
-  virtual void activate() {}
-
-  virtual void deactivate() {}
+  void activate() { this->onActivate(); }
+  void deactivate() { this->onDeactivate(); }
 
  protected:
   bool initialized;
   lv_obj_t* root;
+
+  virtual void onActivate() {}
+  virtual void onDeactivate() {}
 };

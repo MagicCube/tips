@@ -6,9 +6,6 @@ void SceneManager::activateScene(Scene* scene) {
   _activeScene = scene;
 
   if (_activeScene != nullptr) {
-    if (!_activeScene->isInitialized()) {
-      _activeScene->init();
-    }
     lv_scr_load(_activeScene->getRoot());
     _activeScene->activate();
   }
