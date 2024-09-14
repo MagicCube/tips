@@ -31,7 +31,7 @@ void setup() {
   display.setBrightness(20);
 
   defaultScene = new DefaultScene();
-  SceneManager::getInstance().setScene(defaultScene);
+  SceneManager::getInstance().activateScene(defaultScene);
 }
 
 void loop() {
