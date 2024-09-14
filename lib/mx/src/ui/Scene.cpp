@@ -14,4 +14,4 @@ void Scene::begin() {
   }
 }
 
-void Scene::show() { SceneManager::activateScene(this); }
+void Scene::show() { SceneManager::getInstance().activateScene(this); }

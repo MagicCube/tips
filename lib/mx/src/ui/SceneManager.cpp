@@ -1,7 +1,5 @@
 #include "SceneManager.h"
 
-Scene* SceneManager::_activeScene = nullptr;
-
 void SceneManager::activateScene(Scene* scene) {
   deactivateScene();
 

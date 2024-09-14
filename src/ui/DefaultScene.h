@@ -51,7 +51,7 @@ class DefaultScene : public Scene {
   void _initSpeedLabel(lv_obj_t* parent) {
     _speedLabel = lv_label_create(parent);
 
-    lv_label_set_text(_speedLabel, "--:00");
+    lv_label_set_text(_speedLabel, "Henry");
 
     static lv_style_t style;
     lv_style_init(&style);
