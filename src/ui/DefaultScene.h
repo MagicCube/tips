@@ -32,9 +32,8 @@ class DefaultScene : public Scene {
     lv_obj_set_size(footer, LV_PCT(100), 84);
     _applyContainerStyle(footer);
 
-    this->_initSpeedLabel(body);
-
-    this->initialized = true;
+    // this->_initSpeedLabel(body);
+    this->_initButton(body);
   }
 
   void update() override {
@@ -48,6 +47,16 @@ class DefaultScene : public Scene {
   }
 
  private:
+  void _initButton(lv_obj_t* parent) {
+    lv_obj_t* button = lv_btn_create(parent);
+    lv_obj_set_size(button, 200, 50);
+    lv_obj_center(button);
+
+    lv_obj_t* label = lv_label_create(button);
+    lv_label_set_text(label, "Button");
+    lv_obj_center(label);
+  }
+
   void _initSpeedLabel(lv_obj_t* parent) {
     _speedLabel = lv_label_create(parent);
 
