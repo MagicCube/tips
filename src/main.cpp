@@ -4,16 +4,15 @@
 // Always include `pin_conf.h` first
 #include "pins.h"
 
-// Then comes the `lv_conf.h`
-#include "lv_conf.h"
-
 // MX Framework
 #include "mx_display.h"
+#include "mx_ui.h"
 
-// Others
-#include "drivers.h"
+// Application
+#include "ui/DefaultScene.h"
 
 Display display;
+DefaultScene *defaultScene = nullptr;
 
 // To keep the serial port always alive
 long __lastWakeUpTime = 0;
@@ -31,7 +30,8 @@ void setup() {
   display.begin();
   display.setBrightness(20);
 
-  lv_obj_set_style_bg_color(lv_scr_act(), lv_color_hex(0x00ff00), 0);
+  defaultScene = new DefaultScene();
+  SceneManager::getInstance().setScene(defaultScene);
 }
 
 void loop() {
