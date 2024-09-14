@@ -28,10 +28,18 @@ void wakeUp() {
   }
 }
 
+void initDrivers() {
+  lv_st77916_init();
+  lv_cst816_init();
+}
+
 void setup() {
   delay(200);
 
   Serial.begin(115200);
+
+  initDrivers();
+
   display.begin();
   display.setBrightness(10);
 

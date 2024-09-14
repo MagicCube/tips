@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Display.h"
-#include "drivers/cst816/cst816_lv_8.h"
 
 class TouchDisplay : public Display {
  public:
@@ -33,12 +32,5 @@ class TouchDisplay : public Display {
         touch->mirrorY(false);
         break;
     }
-  }
-
- protected:
-  void initDrivers() override {
-    Display::initDrivers();
-
-    lv_cst816_init();
   }
 };

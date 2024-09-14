@@ -3,14 +3,10 @@
 #include <lvgl.h>
 
 #include "../Updatable.h"
-#include "drivers/st77916/st77916_lv_8.h"
 
 class Display : public Updatable {
  public:
-  virtual void begin() override {
-    initDrivers();
-    resetDisplay();
-  }
+  virtual void begin() override { resetDisplay(); }
 
   virtual void setRotation(uint8_t rotation) {
     if (rotation > 3) return;
@@ -61,8 +57,6 @@ class Display : public Updatable {
   }
 
  protected:
-  virtual void initDrivers() { lv_st77916_init(); }
-
   virtual void resetDisplay() {
     switchBacklightOn();
     setRotation(1);
