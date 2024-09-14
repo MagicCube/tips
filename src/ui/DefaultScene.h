@@ -33,6 +33,7 @@ class DefaultScene : public Scene {
     _applyContainerStyle(footer);
 
     // this->_initSpeedLabel(body);
+    this->_initSlider(header);
     this->_initButton(body);
   }
 
@@ -55,6 +56,12 @@ class DefaultScene : public Scene {
     lv_obj_t* label = lv_label_create(button);
     lv_label_set_text(label, "Button");
     lv_obj_center(label);
+  }
+
+  void _initSlider(lv_obj_t* parent) {
+    lv_obj_t* slider = lv_slider_create(parent);
+    lv_obj_set_size(slider, 200, 20);
+    lv_obj_center(slider);
   }
 
   void _initSpeedLabel(lv_obj_t* parent) {

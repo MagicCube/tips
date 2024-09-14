@@ -1,0 +1,1 @@
+#define MX_TOUCH_ENABLED 1

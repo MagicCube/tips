@@ -4,14 +4,19 @@
 // Always include `pin_conf.h` first
 #include "pins.h"
 
+// Drivers
+#include "drivers/cst816/cst816_lv_8.h"
+#include "drivers/st77916/st77916_lv_8.h"
+
 // MX Framework
+#include "mx_conf.h"
 #include "mx_display.h"
 #include "mx_ui.h"
 
 // Application
 #include "ui/DefaultScene.h"
 
-Display display;
+TouchDisplay display;
 DefaultScene *defaultScene = nullptr;
 
 // To keep the serial port always alive

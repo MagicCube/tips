@@ -3,53 +3,39 @@
 #include <lvgl.h>
 
 #include "../Updatable.h"
-#include "drivers/st77916/st77916.h"
+#include "drivers/st77916/st77916_lv_8.h"
 
 class Display : public Updatable {
  public:
-  void begin() override {
-    scr_lvgl_init();
-    switchBacklightOn();
-    setRotation(1);
-    clear();
+  virtual void begin() override {
+    initDrivers();
+    resetDisplay();
   }
 
-  void setRotation(uint8_t rotation) {
+  virtual void setRotation(uint8_t rotation) {
     if (rotation > 3) return;
-    if (lcd == NULL || touch == NULL) return;
+    if (lcd == NULL) return;
 
     switch (rotation) {
       case 1:  // 顺时针90度
         lcd->swapXY(true);
         lcd->mirrorX(true);
         lcd->mirrorY(false);
-        touch->swapXY(true);
-        touch->mirrorX(true);
-        touch->mirrorY(false);
         break;
       case 2:
         lcd->swapXY(false);
         lcd->mirrorX(true);
         lcd->mirrorY(true);
-        touch->swapXY(false);
-        touch->mirrorX(true);
-        touch->mirrorY(true);
         break;
       case 3:
         lcd->swapXY(true);
         lcd->mirrorX(false);
         lcd->mirrorY(true);
-        touch->swapXY(true);
-        touch->mirrorX(false);
-        touch->mirrorY(true);
         break;
       default:
         lcd->swapXY(false);
         lcd->mirrorX(false);
         lcd->mirrorY(false);
-        touch->swapXY(false);
-        touch->mirrorX(false);
-        touch->mirrorY(false);
         break;
     }
   }
@@ -72,5 +58,14 @@ class Display : public Updatable {
 
   void clear(lv_color_t color = lv_color_hex(0x000000)) {
     lv_obj_set_style_bg_color(lv_scr_act(), color, 0);
+  }
+
+ protected:
+  virtual void initDrivers() { lv_st77916_init(); }
+
+  virtual void resetDisplay() {
+    switchBacklightOn();
+    setRotation(1);
+    clear();
   }
 };

@@ -10,7 +10,8 @@
 #define TFT_SDA2 13
 #define TFT_SDA3 14
 
-#define BTN_PIN 0
+#define SCREEN_RES_HOR 360
+#define SCREEN_RES_VER 360
 
 #define TOUCH_PIN_NUM_I2C_SCL 8
 #define TOUCH_PIN_NUM_I2C_SDA 7
