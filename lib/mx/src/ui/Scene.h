@@ -2,7 +2,9 @@
 
 #include <lvgl.h>
 
-class Scene {
+#include "Updatable.h"
+
+class Scene : public Updatable {
  public:
   Scene() {
     initialized = false;
@@ -15,6 +17,13 @@ class Scene {
   bool isInitialized() { return initialized; }
 
   lv_obj_t* getRoot() { return root; }
+
+  virtual void begin() {
+    if (!initialized) {
+      init();
+      initialized = true;
+    }
+  }
 
   virtual void init() = 0;
 
