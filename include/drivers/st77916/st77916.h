@@ -176,7 +176,6 @@ void scr_lvgl_init() {
   lcd->displayOn();
 
   screen_switch(true);
-  backlight->setBrightness(100);  // 设置亮度
 
   size_t lv_cache_rows = 72;
 
