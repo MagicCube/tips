@@ -28,7 +28,7 @@ void setup() {
 
   Serial.begin(115200);
   display.begin();
-  display.setBrightness(20);
+  display.setBrightness(10);
 
   defaultScene = new DefaultScene();
   defaultScene->begin();
