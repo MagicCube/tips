@@ -1,5 +1,4 @@
-#ifndef DEFAULT_SCENE_H
-#define DEFAULT_SCENE_H
+#pragma once
 
 #include <mx_ui.h>
 
@@ -65,5 +64,3 @@ class DefaultScene : public Scene {
     lv_obj_set_style_bg_color(container, lv_color_hex(0x000000), LV_PART_MAIN);
   }
 };
-
-#endif
