@@ -53,13 +53,13 @@ class Display : public Updatable {
   }
 
   void clear(lv_color_t color = lv_color_hex(0x000000)) {
-    lv_obj_set_style_bg_color(lv_scr_act(), color, 0);
+    lv_obj_set_style_bg_color(lv_scr_act(), color, LV_PART_MAIN);
   }
 
  protected:
   virtual void resetDisplay() {
     switchBacklightOn();
-    setRotation(1);
+    setRotation(0);
     clear();
   }
 };
