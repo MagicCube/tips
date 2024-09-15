@@ -3,6 +3,7 @@
 
 // Always include `device_conf.h` first
 #include "device_conf.h"
+#include "lv_conf.h"
 
 // Drivers
 #include "drivers/cst816/cst816_lv_8.h"

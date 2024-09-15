@@ -2,7 +2,6 @@
 
 #include <ESP_IOExpander.h>
 #include <ESP_Panel_Library.h>
-#include <lvgl.h>
 
 #include "device_conf.h"
 
