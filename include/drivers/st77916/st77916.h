@@ -4,6 +4,8 @@
 #include <ESP_Panel_Library.h>
 #include <lvgl.h>
 
+#include "device_conf.h"
+
 static ESP_PanelLcd *lcd = NULL;
 static ESP_PanelBacklight *backlight = NULL;
 

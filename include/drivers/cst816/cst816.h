@@ -3,6 +3,8 @@
 #include <ESP_IOExpander.h>
 #include <ESP_Panel_Library.h>
 
+#include "device_conf.h"
+
 static ESP_PanelTouch *touch = NULL;
 
 void cst816_init() {

@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <lvgl.h>
 
-// Always include `pin_conf.h` first
-#include "pins.h"
+// Always include `device_conf.h` first
+#include "device_conf.h"
 
 // Drivers
 #include "drivers/cst816/cst816_lv_8.h"
