@@ -781,6 +781,9 @@
     #define LV_DEMO_MUSIC_AUTO_PLAY 0
 #endif
 
+/* SDL2 Emulator */
+#define SDL2
+
 /*--END OF LV_CONF_H--*/
 
 #endif /*LV_CONF_H*/
