@@ -39,7 +39,7 @@ void setup() {
   initDrivers();
 
   Scene* defaultScene = getDefaultScene();
-  if (defaultScene != NULL) {
+  if (defaultScene != nullptr) {
     defaultScene->begin();
     defaultScene->show();
   }
