@@ -1,7 +1,5 @@
 #pragma once
 
-#include <lvgl.h>
-
 #include "Component.h"
 #include "ui/scene/Scene.h"
 
