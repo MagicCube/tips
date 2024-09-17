@@ -1,8 +1,0 @@
-{
-  "files.associations": {
-    "*.html": "html",
-    ".env": "shellscript",
-    "*.json": "jsonc",
-    "app_hal.h": "c"
-  }
-}
