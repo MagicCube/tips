@@ -4,7 +4,7 @@
 // Always include `device_conf.h` first
 #include "device_conf.h"
 
-// Drivers
+// Hardwares
 #include "hardwares/cst816/cst816_lv_8.h"
 #include "hardwares/st77916/st77916_lv_8.h"
 
