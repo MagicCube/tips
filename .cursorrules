@@ -8,3 +8,5 @@
 ## C++
 - Always add `#pragma once` in .h files.
 - Invoke superclass methods when overriding in subclasses if possible. Don't forget `override` keyword.
+- All private members of a class should be prefixed with `_`.
+- Getter and setter methods should be named `get` and `set` respectively.

@@ -2,15 +2,21 @@
 
 #include <mx_ui.h>
 
+#include "ui/scenes/TestScene.h"
+
+Scene *testScene;
+
 class App : public Application {
  protected:
   void onInit() override {
     Application::onInit();
-    lv_obj_t *button = lv_btn_create(root);
-    lv_obj_set_size(button, 100, 100);
-    lv_obj_center(button);
-    lv_obj_set_style_bg_color(button, lv_color_hex(0x0000ff), 0);
+    testScene = new TestScene();
+    testScene->begin();
   }
 
-  void onLaunch() override { Application::onLaunch(); }
+  void onLaunch() override {
+    Application::onLaunch();
+
+    activateScene(testScene);
+  }
 };

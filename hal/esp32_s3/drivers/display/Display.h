@@ -1,12 +1,10 @@
 #pragma once
 
+#include <Component.h>
 #include <lvgl.h>
-#include <Updatable.h>
 
-class Display : public Updatable {
+class Display : public Component {
  public:
-  virtual void begin() override { resetDisplay(); }
-
   virtual void setRotation(uint8_t rotation) {
     if (rotation > 3) return;
     if (lcd == NULL) return;
@@ -46,16 +44,21 @@ class Display : public Updatable {
     backlight->setBrightness(brightness);
   }
 
-  void update() override {
-    lv_task_handler();
-    vTaskDelay(5);
-  }
-
   void clear(lv_color_t color = lv_color_hex(0x000000)) {
     lv_obj_set_style_bg_color(lv_scr_act(), color, LV_PART_MAIN);
   }
 
  protected:
+  virtual void onInit() override {
+    Component::onInit();
+    resetDisplay();
+  }
+
+  virtual void onUpdate() override {
+    lv_task_handler();
+    vTaskDelay(5);
+  }
+
   virtual void resetDisplay() {
     switchBacklightOn();
     setRotation(0);
