@@ -1,5 +1,8 @@
 #include <lvgl.h>
 
+#define mx_left(obj, x) lv_obj_set_x(obj, x)
+#define mx_top(obj, y) lv_obj_set_y(obj, y)
+#define mx_pos(obj, y) lv_obj_set_pos(obj, x, y)
 #define mx_center(obj) lv_obj_center(obj)
 
 #define mx_w(obj, width) lv_obj_set_width(obj, width)
@@ -12,6 +15,18 @@
 #define mx_size_full(obj) \
   mx_w_full(obj);         \
   mx_h_full(obj)
+
+#define mx_p(obj, top, right, bottom, left)               \
+  lv_obj_set_style_pad_top(obj, top, LV_PART_MAIN);       \
+  lv_obj_set_style_pad_right(obj, right, LV_PART_MAIN);   \
+  lv_obj_set_style_pad_bottom(obj, bottom, LV_PART_MAIN); \
+  lv_obj_set_style_pad_left(obj, left, LV_PART_MAIN);
+#define mx_p_all(obj, padding) lv_obj_set_style_pad_all(obj, padding, LV_PART_MAIN)
+#define mx_p_x(obj, padding) lv_obj_set_style_pad_hor(obj, padding, LV_PART_MAIN)
+#define mx_p_y(obj, padding) lv_obj_set_style_pad_ver(obj, padding, LV_PART_MAIN)
+#define mx_p_xy(obj, x, y) \
+  mx_p_x(x);               \
+  mx_p_y(y)
 
 #define mx_bg_color(obj, color) lv_obj_set_style_bg_color(obj, lv_color_hex(color), LV_PART_MAIN)
 
