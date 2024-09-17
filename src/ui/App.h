@@ -16,6 +16,6 @@ class TipApp : public Application {
   void onLaunch() override {
     Application::onLaunch();
 
-    testScene->activate();
+    testScene->show();
   }
 };

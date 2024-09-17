@@ -16,6 +16,8 @@ class Scene : public Component {
 
   void deactivate() { onDeactivate(); }
 
+  void show() { activate(); }
+
  protected:
   lv_obj_t* root;
   lv_coord_t width;
