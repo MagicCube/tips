@@ -34,3 +34,5 @@
 
 #define mx_rounded(obj, radius) lv_obj_set_style_radius(obj, radius, LV_PART_MAIN)
 #define mx_rounded_full(obj) mx_rounded(obj, LV_RADIUS_CIRCLE)
+
+#define mx_text(obj, text) lv_label_set_text(obj, text)
