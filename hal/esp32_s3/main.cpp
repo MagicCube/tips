@@ -15,15 +15,18 @@
 #include "mx_conf.h"
 #include "mx_ui.h"
 
-// Application
-#include "ui/DefaultScene.h"
-
 TouchDisplay display;
-DefaultScene *defaultScene = nullptr;
 
-void initDrivers() {
+Scene* getDefaultScene();
+
+void initHardwares() {
   lv_st77916_init();
   lv_cst816_init();
+}
+
+void initDrivers() {
+  display.begin();
+  display.setBrightness(10);
 }
 
 void setup() {
@@ -32,14 +35,14 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Tips is starting...");
 
+  initHardwares();
   initDrivers();
 
-  display.begin();
-  display.setBrightness(10);
-
-  defaultScene = new DefaultScene();
-  defaultScene->begin();
-  defaultScene->show();
+  Scene* defaultScene = getDefaultScene();
+  if (defaultScene != NULL) {
+    defaultScene->begin();
+    defaultScene->show();
+  }
 
   Serial.println("Tips is now started");
 }
