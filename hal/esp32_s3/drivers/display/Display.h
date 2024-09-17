@@ -1,8 +1,7 @@
 #pragma once
 
 #include <lvgl.h>
-
-#include "../Updatable.h"
+#include <Updatable.h>
 
 class Display : public Updatable {
  public:

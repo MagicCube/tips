@@ -3,15 +3,16 @@
 
 // Always include `device_conf.h` first
 #include "device_conf.h"
-#include "lv_conf.h"
 
 // Drivers
 #include "hardwares/cst816/cst816_lv_8.h"
 #include "hardwares/st77916/st77916_lv_8.h"
 
+// Drivers
+#include "drivers/display/TouchDisplay.h"
+
 // MX Framework
 #include "mx_conf.h"
-#include "mx_display.h"
 #include "mx_ui.h"
 
 // Application
