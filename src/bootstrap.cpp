@@ -4,7 +4,4 @@
 
 App app;
 
-void bootstrap() {
-  app.begin();
-  app.start();
-}
+void bootstrap() { app.start(); }

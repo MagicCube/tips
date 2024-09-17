@@ -11,12 +11,11 @@ class App : public Application {
   void onInit() override {
     Application::onInit();
     testScene = new TestScene();
-    testScene->begin();
   }
 
   void onLaunch() override {
     Application::onLaunch();
 
-    activateScene(testScene);
+    testScene->activate();
   }
 };

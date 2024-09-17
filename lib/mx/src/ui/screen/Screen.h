@@ -1,5 +1,7 @@
 #pragma once
 
+#include <lvgl.h>
+
 class Screen {
  public:
   ~Screen() {}
@@ -17,5 +19,3 @@ class Screen {
   static Screen *_main;
   lv_disp_t *_display;
 };
-
-Screen *Screen::_main = new Screen(nullptr);
