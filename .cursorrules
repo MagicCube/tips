@@ -1,0 +1,10 @@
+## Technical Stack
+- ESP32-S3 Arduino Core
+- PlatformIO
+- C++ 11
+- LVGL v8
+
+
+## C++
+- Always add `#pragma once` in .h files.
+- Invoke superclass methods when overriding in subclasses if possible. Don't forget `override` keyword.
