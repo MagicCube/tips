@@ -6,8 +6,8 @@
 #include "lv_conf.h"
 
 // Drivers
-#include "drivers/cst816/cst816_lv_8.h"
-#include "drivers/st77916/st77916_lv_8.h"
+#include "hardwares/cst816/cst816_lv_8.h"
+#include "hardwares/st77916/st77916_lv_8.h"
 
 // MX Framework
 #include "mx_conf.h"
