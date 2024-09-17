@@ -13,7 +13,8 @@
 
 TouchDisplay display;
 
-void bootstrap();
+void mx_bootstrap();
+void mx_loop();
 
 void initHardwares() {
   lv_st77916_init();
@@ -34,9 +35,12 @@ void setup() {
   initHardwares();
   initDrivers();
 
-  bootstrap();
+  mx_bootstrap();
 
   Serial.println("Tips is now started");
 }
 
-void loop() { display.update(); }
+void loop() {
+  mx_loop();
+  display.update();
+}

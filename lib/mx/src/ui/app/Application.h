@@ -22,13 +22,7 @@ class Application : public Component {
 
   virtual void onLaunch() {};
 
-  virtual void onUpdate() {
-    Component::update();
-
-    if (_activeScene != nullptr) {
-      _activeScene->update();
-    }
-  };
+  virtual void onUpdate();
 
  private:
   static Application *_current;

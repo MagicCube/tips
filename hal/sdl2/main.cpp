@@ -11,16 +11,18 @@
 #include "app_hal.h"
 #include "lvgl.h"
 
-void bootstrap();
+void mx_bootstrap();
+void mx_loop();
 
 int main(void) {
   lv_init();
 
   hal_setup();
 
-  bootstrap();
+  mx_bootstrap();
 
   while (1) {
+    mx_loop();
     hal_loop();
   }
 }
