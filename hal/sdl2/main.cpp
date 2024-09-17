@@ -8,23 +8,17 @@
  ******************************************************************************
  */
 
-#include <lvgl.h>
-#include <mx_ui.h>
-
 #include "app_hal.h"
+#include "lvgl.h"
 
-Scene* getDefaultScene();
+void mx_bootstrap();
 
 int main(void) {
   lv_init();
 
   hal_setup();
 
-  Scene* defaultScene = getDefaultScene();
-  if (defaultScene != nullptr) {
-    defaultScene->begin();
-    defaultScene->show();
-  }
+  mx_bootstrap();
 
   while (1) {
     hal_loop();

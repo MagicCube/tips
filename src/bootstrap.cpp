@@ -2,7 +2,8 @@
 
 #include "ui/DefaultScene.h"
 
-Scene *getDefaultScene() {
+void mx_bootstrap() {
   static Scene *defaultScene = new DefaultScene();
-  return defaultScene;
+  defaultScene->begin();
+  defaultScene->show();
 }

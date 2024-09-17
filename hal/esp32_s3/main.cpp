@@ -11,13 +11,9 @@
 // Drivers
 #include "drivers/display/TouchDisplay.h"
 
-// MX Framework
-#include "mx_conf.h"
-#include "mx_ui.h"
-
 TouchDisplay display;
 
-Scene* getDefaultScene();
+void mx_bootstrap();
 
 void initHardwares() {
   lv_st77916_init();
@@ -38,11 +34,7 @@ void setup() {
   initHardwares();
   initDrivers();
 
-  Scene* defaultScene = getDefaultScene();
-  if (defaultScene != nullptr) {
-    defaultScene->begin();
-    defaultScene->show();
-  }
+  mx_bootstrap();
 
   Serial.println("Tips is now started");
 }
