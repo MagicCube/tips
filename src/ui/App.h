@@ -6,7 +6,7 @@
 
 Scene *testScene;
 
-class App : public Application {
+class TipApp : public Application {
  protected:
   void onInit() override {
     Application::onInit();

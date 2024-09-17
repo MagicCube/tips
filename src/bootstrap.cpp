@@ -1,7 +1,5 @@
-#include <lvgl.h>
-
 #include "ui/App.h"
 
-App app;
+TipApp app;
 
 void bootstrap() { app.start(); }
