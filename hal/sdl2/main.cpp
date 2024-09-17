@@ -11,7 +11,7 @@
 #include "app_hal.h"
 #include "lvgl.h"
 
-void mx_bootstrap();
+void mx_setup();
 void mx_loop();
 
 int main(void) {
@@ -19,7 +19,7 @@ int main(void) {
 
   hal_setup();
 
-  mx_bootstrap();
+  mx_setup();
 
   while (1) {
     mx_loop();

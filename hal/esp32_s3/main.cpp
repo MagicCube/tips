@@ -13,7 +13,7 @@
 
 TouchDisplay display;
 
-void mx_bootstrap();
+void mx_setup();
 void mx_loop();
 
 void initHardwares() {
@@ -35,7 +35,7 @@ void setup() {
   initHardwares();
   initDrivers();
 
-  mx_bootstrap();
+  mx_setup();
 
   Serial.println("Tips is now started");
 }

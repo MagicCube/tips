@@ -2,7 +2,7 @@
 
 TipApp app;
 
-void mx_bootstrap() {
+void mx_setup() {
   // Start application immediately
   app.start();
 }
