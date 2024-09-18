@@ -39,6 +39,7 @@
 #define mx_rounded_full(obj) mx_rounded(obj, LV_RADIUS_CIRCLE)
 
 #define mx_text(obj, text) lv_label_set_text(obj, text)
+#define mx_text_fmt(obj, fmt, ...) lv_label_set_text_fmt(obj, fmt, __VA_ARGS__)
 #define mx_text_color(obj, color) lv_obj_set_style_text_color(obj, lv_color_hex(color), LV_PART_MAIN)
 #define mx_font_custom(obj, font_name, size) lv_obj_set_style_text_font(obj, &lv_font_##font_name##_##size, LV_PART_MAIN)
 #define mx_font(obj, size) mx_font_custom(obj, montserrat, size)
