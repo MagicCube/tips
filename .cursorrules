@@ -10,3 +10,5 @@
 - Invoke superclass methods when overriding in subclasses if possible. Don't forget `override` keyword.
 - All private members of a class should be prefixed with `_`.
 - Getter and setter methods should be named `get` and `set` respectively.
+- Prefer `auto` and `nullptr` keyword.
+- Prefer `mx_` prefix for all methods that calls `lvgl` directly.
