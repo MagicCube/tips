@@ -27,3 +27,9 @@ void Scene::onInit() {
   mx_rounded_full(root);
 #endif
 }
+
+void Scene::willDestroy() {
+  Scene::willDestroy();
+  lv_obj_del(root);
+  root = nullptr;
+}

@@ -8,7 +8,6 @@
 class Scene : public Component {
  public:
   Scene() {}
-  ~Scene() {}
 
   lv_obj_t* getRoot() { return root; }
 
@@ -24,6 +23,7 @@ class Scene : public Component {
   lv_coord_t height;
 
   virtual void onInit();
+  virtual void willDestroy();
 
   virtual void onActivate() {};
   virtual void onDeactivate() {};

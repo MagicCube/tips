@@ -42,3 +42,5 @@
 #define mx_text_color(obj, color) lv_obj_set_style_text_color(obj, lv_color_hex(color), LV_PART_MAIN)
 #define mx_font_custom(obj, font_name, size) lv_obj_set_style_text_font(obj, &lv_font_##font_name##_##size, LV_PART_MAIN)
 #define mx_font(obj, size) mx_font_custom(obj, montserrat, size)
+
+#define mx_img(obj, path) lv_img_set_src(obj, path)
