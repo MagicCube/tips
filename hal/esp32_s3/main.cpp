@@ -30,7 +30,7 @@ void initHardwares() {
 
 void initDrivers() {
   display.begin();
-  display.setBrightness(10);
+  display.setBrightness(66);
 
   spiffsDriver.begin();
 }
