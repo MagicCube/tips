@@ -59,7 +59,7 @@
     #define LV_MEM_CUSTOM_ALLOC   malloc
     #define LV_MEM_CUSTOM_FREE    free
     #define LV_MEM_CUSTOM_REALLOC realloc
-    #define LV_MEM_SIZE (128U * 1024U)
+    #define LV_MEM_SIZE (256U * 1024U)
 #endif     /*LV_MEM_CUSTOM*/
 
 /*Number of the intermediate memory buffer used during rendering and other internal processing mechanisms.
@@ -107,7 +107,7 @@
     /*Allow buffering some shadow calculation.
     *LV_SHADOW_CACHE_SIZE is the max. shadow size to buffer, where shadow size is `shadow_width + radius`
     *Caching has LV_SHADOW_CACHE_SIZE^2 RAM cost*/
-    #define LV_SHADOW_CACHE_SIZE 0
+    #define LV_SHADOW_CACHE_SIZE 4
 
     /* Set number of maximally cached circle data.
     * The circumference of 1/4 circle are saved for anti-aliasing
@@ -121,7 +121,7 @@
  *With complex image decoders (e.g. PNG or JPG) caching can save the continuous open/decode of images.
  *However the opened images might consume additional RAM.
  *0: to disable caching*/
-#define LV_IMG_CACHE_DEF_SIZE   0
+#define LV_IMG_CACHE_DEF_SIZE   4
 
 /*Number of stops allowed per gradient. Increase this to allow more stops.
  *This adds (sizeof(lv_color_t) + 1) bytes per additional stop*/
