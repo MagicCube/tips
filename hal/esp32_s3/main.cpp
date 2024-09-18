@@ -36,7 +36,7 @@ void initDrivers() {
 }
 
 void setup() {
-  delay(200);
+  delay(2000);
 
   Serial.begin(115200);
   Serial.println("Welcome to Tips");
