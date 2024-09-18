@@ -3,7 +3,6 @@
 #include <mx_ui.h>
 
 #include "fonts.h"
-#include "impl/WiFiTimeClient.h"
 
 class TestScene : public Scene {
  protected:
@@ -20,6 +19,6 @@ class TestScene : public Scene {
   void onUpdate() override {
     Scene::onUpdate();
 
-    mx_text(label, WiFiTimeClient::getInstance().getFormattedTime().substring(0, 5).c_str());
+    mx_text(label, "20:56");
   }
 };

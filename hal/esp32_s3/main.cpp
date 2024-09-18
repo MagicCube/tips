@@ -14,9 +14,6 @@
 #include "drivers/display/TouchDisplay.h"
 #include "drivers/spiffs-driver/SPIFFSDriver.h"
 
-// Others
-#include "impl/WiFiTimeClient.h"
-
 TouchDisplay display;
 SPIFFSDriver spiffsDriver;
 
@@ -49,8 +46,6 @@ void initWiFi() {
   Serial.println("WiFi connected.");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
-
-  WiFiTimeClient::getInstance().begin();
 }
 
 void setup() {
@@ -60,7 +55,6 @@ void setup() {
   initLogging();
   initHardwares();
   initDrivers();
-  initWiFi();
 
   mx_setup();
 
@@ -68,7 +62,6 @@ void setup() {
 }
 
 void loop() {
-  WiFiTimeClient::getInstance().update();
   mx_loop();
   display.update();
 }
