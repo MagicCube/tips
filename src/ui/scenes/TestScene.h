@@ -6,19 +6,19 @@
 
 class TestScene : public Scene {
  protected:
-  lv_obj_t *label;
+  MXObject *label;
 
   void onInit() override {
     Scene::onInit();
 
-    mx(this).image("A:/watch_face_001.jpg").center();
+    mx(this)->image("A:/watch_face_001.jpg").center();
 
-    label = mx(this).label().text_color(0x520404).font(72).center_x().top(44).self();
+    label = mx(this)->label().text_color(0x520404).center_x().y(44).ptr();
   }
 
   void onUpdate() override {
     Scene::onUpdate();
 
-    mx_text(label, "20:56");
+    label->text("20:56");
   }
 };

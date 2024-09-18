@@ -3,13 +3,14 @@
 #include <lvgl.h>
 
 #include "Component.h"
+#include "ui/obj/MXObject.h"
 #include "ui/screen/Screen.h"
 
 class Scene : public Component {
  public:
   Scene() {}
 
-  lv_obj_t* getRoot() { return root; }
+  MXObject* getRoot() { return root; }
 
   void activate();
 
@@ -18,7 +19,7 @@ class Scene : public Component {
   void show() { activate(); }
 
  protected:
-  lv_obj_t* root;
+  MXObject* root;
   lv_coord_t width;
   lv_coord_t height;
 

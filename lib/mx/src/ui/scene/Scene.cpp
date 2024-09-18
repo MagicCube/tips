@@ -1,7 +1,6 @@
 #include "Scene.h"
 
 #include "ui/app/Application.h"
-#include "ui/lvgl/shortcuts.h"
 
 void Scene::activate() {
   auto activeScene = Application::getCurrent()->getActiveScene();
@@ -12,24 +11,20 @@ void Scene::activate() {
   begin();
 
   onActivate();
-  lv_scr_load(root);
+  lv_scr_load(root->lv_obj());
 
   Application::getCurrent()->setActiveScene(this);
 }
 
 void Scene::onInit() {
-  root = lv_obj_create(nullptr);
-
-  mx_size_full(root);
-  mx_bg_color(root, 0x000000);
+  root = mx()->size_full().bg_color(0x000000).ptr();
 #ifdef SDL2
-  mx_clip_corner(root);
-  mx_rounded_full(root);
+  root->clip_corner().rounded_full();
 #endif
 }
 
 void Scene::willDestroy() {
   Scene::willDestroy();
-  lv_obj_del(root);
+  delete root;
   root = nullptr;
 }

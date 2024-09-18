@@ -49,6 +49,7 @@ void initWiFi() {
 }
 
 void setup() {
+  delay(200);
   Serial.begin(115200);
   Serial.println("Welcome to Tips");
 
@@ -58,7 +59,7 @@ void setup() {
 
   mx_setup();
 
-  LV_LOG_INFO("Tips is now started");
+  Serial.println("Tips is now started");
 }
 
 void loop() {
