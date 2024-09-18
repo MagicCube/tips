@@ -3,7 +3,10 @@
 #define mx_left(obj, x) lv_obj_set_x(obj, x)
 #define mx_top(obj, y) lv_obj_set_y(obj, y)
 #define mx_pos(obj, y) lv_obj_set_pos(obj, x, y)
+
 #define mx_center(obj) lv_obj_center(obj)
+#define mx_center_x(obj) lv_obj_align(obj, LV_ALIGN_TOP_MID, 0, 0);
+#define mx_center_y(obj) lv_obj_align(obj, LV_ALIGN_LEFT_MID, 0, 0);
 
 #define mx_w(obj, width) lv_obj_set_width(obj, width)
 #define mx_h(obj, width) lv_obj_set_height(obj, width)
@@ -36,5 +39,6 @@
 #define mx_rounded_full(obj) mx_rounded(obj, LV_RADIUS_CIRCLE)
 
 #define mx_text(obj, text) lv_label_set_text(obj, text)
+#define mx_text_color(obj, color) lv_obj_set_style_text_color(obj, lv_color_hex(color), LV_PART_MAIN)
 #define mx_font_custom(obj, font_name, size) lv_obj_set_style_text_font(obj, &lv_font_##font_name##_##size, LV_PART_MAIN)
 #define mx_font(obj, size) mx_font_custom(obj, montserrat, size)
