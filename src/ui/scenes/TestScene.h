@@ -1,6 +1,5 @@
 #pragma once
 
-#include <SPIFFS.h>
 #include <mx_ui.h>
 
 #include "fonts.h"
@@ -12,22 +11,14 @@ class TestScene : public Scene {
   void onInit() override {
     Scene::onInit();
 
-    auto img = lv_img_create(root);
-    mx_img(img, "A:/watch_face_001.jpg");
-    mx_center(img);
+    mx(this).image("A:/watch_face_001.jpg").center();
 
-    label = lv_label_create(root);
-    mx_text_color(label, 0x520404);
-
-    mx_text(label, "19:38");
-    mx_center_x(label);
-    mx_top(label, 44);
-    mx_font(label, 72);
+    label = mx(this).label().text_color(0x520404).font(72).center_x().top(44).self();
   }
 
   void onUpdate() override {
     Scene::onUpdate();
 
-    mx_text_fmt(label, "%d", millis() / 1000);
+    mx_text_fmt(label, "%d", 100);
   }
 };
