@@ -29,8 +29,6 @@ void initHardwares() {
 }
 
 void initDrivers() {
-  delay(2000);
-
   display.begin();
   display.setBrightness(10);
 
