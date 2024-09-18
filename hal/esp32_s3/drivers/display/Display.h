@@ -44,9 +44,7 @@ class Display : public Component {
     backlight->setBrightness(brightness);
   }
 
-  void clear(lv_color_t color = lv_color_hex(0x000000)) {
-    lv_obj_set_style_bg_color(lv_scr_act(), color, LV_PART_MAIN);
-  }
+  void clear(lv_color_t color = lv_color_hex(0x000000)) { lv_obj_set_style_bg_color(lv_scr_act(), color, LV_PART_MAIN); }
 
  protected:
   virtual void onInit() override {
@@ -60,8 +58,8 @@ class Display : public Component {
   }
 
   virtual void resetDisplay() {
+    clear();
     switchBacklightOn();
     setRotation(0);
-    clear();
   }
 };
