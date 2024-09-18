@@ -36,3 +36,5 @@
 #define mx_rounded_full(obj) mx_rounded(obj, LV_RADIUS_CIRCLE)
 
 #define mx_text(obj, text) lv_label_set_text(obj, text)
+#define mx_font_custom(obj, font_name, size) lv_obj_set_style_text_font(obj, &lv_font_##font_name##_##size, LV_PART_MAIN)
+#define mx_font(obj, size) mx_font_custom(obj, montserrat, size)
