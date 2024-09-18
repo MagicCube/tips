@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <SPIFFS.h>
+#include <WiFi.h>
 #include <lvgl.h>
 
 // Always include `device_conf.h` first
@@ -12,6 +13,9 @@
 // Drivers
 #include "drivers/display/TouchDisplay.h"
 #include "drivers/spiffs-driver/SPIFFSDriver.h"
+
+// Others
+#include "impl/WiFiTimeClient.h"
 
 TouchDisplay display;
 SPIFFSDriver spiffsDriver;
@@ -35,15 +39,28 @@ void initDrivers() {
   spiffsDriver.begin();
 }
 
-void setup() {
-  delay(2000);
+void initWiFi() {
+  WiFi.begin("Henry's iPhone 14 Pro", "13913954971");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("");
+  Serial.println("WiFi connected.");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
 
+  WiFiTimeClient::getInstance().begin();
+}
+
+void setup() {
   Serial.begin(115200);
   Serial.println("Welcome to Tips");
 
   initLogging();
   initHardwares();
   initDrivers();
+  initWiFi();
 
   mx_setup();
 
@@ -51,6 +68,7 @@ void setup() {
 }
 
 void loop() {
+  WiFiTimeClient::getInstance().update();
   mx_loop();
   display.update();
 }
