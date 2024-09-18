@@ -1,13 +1,14 @@
 #include "ui/App.h"
 
-TipApp app;
+TipApp *app = nullptr;
 
 void mx_setup() {
   // Start application immediately
-  app.start();
+  app = new TipApp();
+  app->start();
 }
 
 void mx_loop() {
   // Update application periodically
-  app.update();
+  app->update();
 }

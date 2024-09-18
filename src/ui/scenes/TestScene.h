@@ -1,5 +1,6 @@
 #pragma once
 
+#include <SPIFFS.h>
 #include <mx_ui.h>
 
 #include "fonts.h"
@@ -10,7 +11,7 @@ class TestScene : public Scene {
     Scene::onInit();
 
     auto img = lv_img_create(root);
-    lv_img_set_src(img, "A:/watch_faces/abstract_01.png");
+    lv_img_set_src(img, "A:/test.jpg");
     mx_center(img);
 
     auto label = lv_label_create(root);

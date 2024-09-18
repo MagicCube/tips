@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <SPIFFS.h>
 #include <lvgl.h>
 
 // Always include `device_conf.h` first
@@ -10,11 +11,17 @@
 
 // Drivers
 #include "drivers/display/TouchDisplay.h"
+#include "drivers/spiffs-driver/SPIFFSDriver.h"
 
 TouchDisplay display;
+SPIFFSDriver spiffsDriver;
 
 void mx_setup();
 void mx_loop();
+
+void initLogging() {
+  lv_log_register_print_cb([](const char* buf) { Serial.print(buf); });
+}
 
 void initHardwares() {
   lv_st77916_init();
@@ -22,22 +29,27 @@ void initHardwares() {
 }
 
 void initDrivers() {
+  delay(2000);
+
   display.begin();
   display.setBrightness(10);
+
+  spiffsDriver.begin();
 }
 
 void setup() {
   delay(200);
 
   Serial.begin(115200);
-  Serial.println("Tips is starting...");
+  Serial.println("Welcome to Tips");
 
+  initLogging();
   initHardwares();
   initDrivers();
 
   mx_setup();
 
-  Serial.println("Tips is now started");
+  LV_LOG_INFO("Tips is now started");
 }
 
 void loop() {
