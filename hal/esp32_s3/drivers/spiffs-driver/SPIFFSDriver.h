@@ -7,9 +7,8 @@
 class SPIFFSDriver : public Component {
  public:
   void begin(char letter) {
-    Component::begin();
-
     this->letter = letter;
+    Component::begin();
   }
 
  protected:
