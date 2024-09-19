@@ -13,7 +13,7 @@ class TestScene : public Scene {
 
     mx(this)->image("A:/watch_face_001.jpg").center();
 
-    label = mx(this)->label().text_color(0x520404).center_x().y(44).ptr();
+    label = &mx(this)->label().text_color(0x520404).center_x().y(44).font(&lv_font_montserrat_72);
   }
 
   void onUpdate() override {
