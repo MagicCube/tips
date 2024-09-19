@@ -4,6 +4,10 @@
 
 class TouchDisplay : public Display {
  public:
+  /**
+   * @brief 设置触摸屏的旋转
+   * @param rotation 旋转角度。0 USB 在上方，1 USB 在左侧，2 USB 在下方，3 USB 在右侧
+   */
   void setRotation(uint8_t rotation) override {
     Display::setRotation(rotation);
 
