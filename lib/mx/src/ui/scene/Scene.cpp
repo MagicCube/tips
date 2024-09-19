@@ -1,5 +1,7 @@
 #include "Scene.h"
 
+#include <lvgl.h>
+
 #include "ui/app/Application.h"
 
 void Scene::activate() {
@@ -17,7 +19,7 @@ void Scene::activate() {
 }
 
 void Scene::onInit() {
-  root = mx()->size_full().bg_color(0x000000).ptr();
+  root = &mx()->size_full().bg_color(0x000000);
 #ifdef SDL2
   root->clip_corner().rounded_full();
 #endif

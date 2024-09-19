@@ -1,7 +1,5 @@
 #pragma once
 
-#include <lvgl.h>
-
 #include "Component.h"
 #include "ui/obj/MXObject.h"
 #include "ui/screen/Screen.h"
