@@ -5,7 +5,16 @@
 #include "bridge.h"
 
 class SPIFFSDriver : public Component {
+ public:
+  void begin(char letter) {
+    Component::begin();
+
+    this->letter = letter;
+  }
+
  protected:
+  char letter;
+
   void onInit() override {
     Component::onInit();
 
@@ -14,7 +23,7 @@ class SPIFFSDriver : public Component {
     static lv_fs_drv_t drv;
     lv_fs_drv_init(&drv);
 
-    drv.letter = 'A';
+    drv.letter = letter;
     drv.cache_size = 0;
 
     drv.ready_cb = nullptr;
