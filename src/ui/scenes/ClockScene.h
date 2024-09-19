@@ -4,7 +4,7 @@
 
 #include "fonts.h"
 
-class TestScene : public Scene {
+class ClockScene : public Scene {
  protected:
   MXObject *label;
 
@@ -19,6 +19,6 @@ class TestScene : public Scene {
   void onUpdate() override {
     Scene::onUpdate();
 
-    label->text("20:56");
+    label->text("00:00");
   }
 };
