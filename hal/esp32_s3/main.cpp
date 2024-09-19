@@ -32,12 +32,12 @@ void initHardwares() {
 void initDrivers() {
   display.begin();
   display.setBrightness(66);
+  display.setRotation(1);
 
-  spiffsDriver.begin();
+  spiffsDriver.begin('A');
 }
 
 void initWiFi() {
-  WiFi.begin("Henry's iPhone 14 Pro", "13913954971");
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
