@@ -17,5 +17,5 @@ bool WiFiConnection::isConnected() {
     return false;
   }
 
-  return millis() - timestamp > 2000;
+  return millis() - timestamp > 1000;
 }
