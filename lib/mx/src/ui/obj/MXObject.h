@@ -33,17 +33,18 @@ class MXObject {
     return *this;
   }
 
-  MXObject& spinner(const lv_coord_t diameter = -1,
+  MXObject& arc() {
+    _internalObj = lv_arc_create(_internalObj);
+    lv_arc_set_bg_angles(_internalObj, 0, 360);
+    remove_style(NULL, LV_PART_KNOB);
+    non_clickable();
+    return *this;
+  }
+
+  MXObject& spinner(const lv_coord_t diameter = lv_pct(100),
                     const uint16_t period = 2000, const uint16_t arc = 60) {
     _internalObj = lv_spinner_create(_internalObj, period, arc);
     auto d = diameter;
-    if (d < 0) {
-      auto parent = _internalObj->parent;
-      auto parentW = lv_obj_get_width(parent);
-      auto parentH = lv_obj_get_height(parent);
-      d = std::min(parentW, parentH);
-      center();
-    }
     lv_obj_set_size(_internalObj, d, d);
     return *this;
   }
@@ -164,7 +165,48 @@ class MXObject {
     return *this;
   }
 
-  /* Text */
+  MXObject& text_color(uint32_t color) {
+    lv_obj_set_style_text_color(_internalObj, lv_color_hex(color),
+                                LV_PART_MAIN);
+    return *this;
+  }
+
+  MXObject& font(const lv_font_t* font) {
+    lv_obj_set_style_text_font(_internalObj, font, LV_PART_MAIN);
+    return *this;
+  }
+
+  MXObject& show() {
+    lv_obj_clear_flag(_internalObj, LV_OBJ_FLAG_HIDDEN);
+    return *this;
+  }
+
+  MXObject& hide() {
+    lv_obj_add_flag(_internalObj, LV_OBJ_FLAG_HIDDEN);
+    return *this;
+  }
+
+  MXObject& add_style(lv_style_t* style, lv_part_t part = LV_PART_MAIN) {
+    lv_obj_add_style(_internalObj, style, part);
+    return *this;
+  }
+
+  MXObject& remove_style(lv_style_t* style, lv_part_t part = LV_PART_MAIN) {
+    lv_obj_remove_style(_internalObj, style, part);
+    return *this;
+  }
+
+  MXObject& clickable() {
+    lv_obj_add_flag(_internalObj, LV_OBJ_FLAG_CLICKABLE);
+    return *this;
+  }
+
+  MXObject& non_clickable() {
+    lv_obj_clear_flag(_internalObj, LV_OBJ_FLAG_CLICKABLE);
+    return *this;
+  }
+
+  // Label specific
   const char* text() { return lv_label_get_text(_internalObj); }
   MXObject& text(const char* text) {
     lv_label_set_text(_internalObj, text);
@@ -179,30 +221,23 @@ class MXObject {
     return *this;
   }
 
-  MXObject& text_color(uint32_t color) {
-    lv_obj_set_style_text_color(_internalObj, lv_color_hex(color),
-                                LV_PART_MAIN);
-    return *this;
-  }
-
-  MXObject& font(const lv_font_t* font) {
-    lv_obj_set_style_text_font(_internalObj, font, LV_PART_MAIN);
-    return *this;
-  }
-
+  // Image specific
   const void* src() { return lv_img_get_src(_internalObj); }
   MXObject& src(const char* src) {
     lv_img_set_src(_internalObj, src);
     return *this;
   }
 
-  MXObject& show() {
-    lv_obj_clear_flag(_internalObj, LV_OBJ_FLAG_HIDDEN);
+  // Arc specific
+  MXObject& arc_color(uint32_t color) {
+    lv_obj_set_style_arc_color(_internalObj, lv_color_hex(color),
+                               LV_PART_INDICATOR);
     return *this;
   }
 
-  MXObject& hide() {
-    lv_obj_add_flag(_internalObj, LV_OBJ_FLAG_HIDDEN);
+  // Arc value
+  MXObject& arc_value(lv_coord_t value) {
+    lv_arc_set_value(_internalObj, value);
     return *this;
   }
 
