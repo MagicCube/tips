@@ -19,7 +19,6 @@
 
 TouchDisplay display;
 SPIFFSDriver spiffsDriver;
-WiFiConnection wifiConnection;
 
 void mx_setup();
 void mx_loop();
@@ -41,15 +40,13 @@ void initDrivers() {
   spiffsDriver.begin('A');
 }
 
-void initWiFi() {
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
+uint64_t __lastSerialUpdateTime = 0;
+void keepSerialAlive() {
+  auto now = millis();
+  if (now - __lastSerialUpdateTime > 5 * 1000) {
+    __lastSerialUpdateTime = now;
+    Serial.println('.');
   }
-  Serial.println("");
-  Serial.println("WiFi connected.");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
 }
 
 void setup() {
@@ -69,4 +66,6 @@ void setup() {
 void loop() {
   mx_loop();
   display.update();
+
+  keepSerialAlive();
 }
