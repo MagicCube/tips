@@ -16,10 +16,22 @@ void Scene::activate() {
 
   begin();
 
-  onActivate();
-  lv_scr_load(root->lv_obj());
-
   Application::current()->setActiveScene(this);
+
+  active = true;
+  onActivate();
+}
+
+void Scene::deactivate() {
+  onDeactivate();
+  active = false;
+}
+
+void Scene::show(lv_scr_load_anim_t animation, uint32_t duration) {
+  if (!active) {
+    activate();
+  }
+  lv_scr_load_anim(root->lv_obj(), animation, duration, 0, false);
 }
 
 void Scene::onInit() {
@@ -36,4 +48,10 @@ void Scene::willDestroy() {
   Scene::willDestroy();
   delete root;
   root = nullptr;
+}
+
+void Scene::update() {
+  if (root) {
+    Component::update();
+  }
 }

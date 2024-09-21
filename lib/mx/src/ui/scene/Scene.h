@@ -10,29 +10,27 @@ class Scene : public Component {
 
   MXObject* getRoot() { return root; }
 
+  bool isActive() { return active; }
+
   void activate();
 
-  void deactivate() { onDeactivate(); }
+  void deactivate();
 
-  void show() { activate(); }
+  void show(lv_scr_load_anim_t animation = LV_SCR_LOAD_ANIM_FADE_ON,
+            uint32_t duration = 500);
 
-  void hide() { deactivate(); }
-
-  void update() {
-    if (root) {
-      Component::update();
-    }
-  }
+  void update() override;
 
  protected:
   MXObject* root;
   lv_coord_t width;
   lv_coord_t height;
+  bool active = false;
 
   virtual bool shouldDestroy() { return false; }
 
-  virtual void onInit();
-  virtual void willDestroy();
+  virtual void onInit() override;
+  virtual void willDestroy() override;
 
   virtual void onActivate() {};
   virtual void onDeactivate() {};
