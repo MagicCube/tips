@@ -8,7 +8,7 @@ class Application : public Component {
   Application() { _current = this; }
   ~Application() {}
 
-  static Application *getCurrent() { return _current; }
+  static Application *current() { return _current; }
 
   Scene *getActiveScene() { return _activeScene; }
 

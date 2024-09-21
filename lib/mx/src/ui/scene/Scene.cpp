@@ -5,7 +5,7 @@
 #include "ui/app/Application.h"
 
 void Scene::activate() {
-  auto activeScene = Application::getCurrent()->getActiveScene();
+  auto activeScene = Application::current()->getActiveScene();
   if (activeScene != nullptr) {
     activeScene->deactivate();
   }
@@ -15,11 +15,14 @@ void Scene::activate() {
   onActivate();
   lv_scr_load(root->lv_obj());
 
-  Application::getCurrent()->setActiveScene(this);
+  Application::current()->setActiveScene(this);
 }
 
 void Scene::onInit() {
+  Component::onInit();
   root = &mx()->size_full().bg_color(0x000000);
+  width = lv_obj_get_width(root->lv_obj());
+  height = lv_obj_get_height(root->lv_obj());
 #ifdef SDL2
   root->clip_corner().rounded_full();
 #endif

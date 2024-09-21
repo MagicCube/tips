@@ -2,6 +2,8 @@
 
 #include <lvgl.h>
 
+#include <algorithm>
+
 class Scene;
 
 class MXObject {
@@ -31,11 +33,28 @@ class MXObject {
     return *this;
   }
 
+  MXObject& spinner(const lv_coord_t diameter = -1,
+                    const uint16_t period = 2000, const uint16_t arc = 60) {
+    _internalObj = lv_spinner_create(_internalObj, period, arc);
+    auto d = diameter;
+    if (d < 0) {
+      auto parent = _internalObj->parent;
+      auto parentW = lv_obj_get_width(parent);
+      auto parentH = lv_obj_get_height(parent);
+      d = std::min(parentW, parentH);
+      center();
+    }
+    lv_obj_set_size(_internalObj, d, d);
+    return *this;
+  }
+
   /* Positioning */
+  lv_coord_t x() { return lv_obj_get_x(_internalObj); }
   MXObject& x(lv_coord_t x) {
     lv_obj_set_x(_internalObj, x);
     return *this;
   }
+  lv_coord_t y() { return lv_obj_get_y(_internalObj); }
   MXObject& y(lv_coord_t y) {
     lv_obj_set_y(_internalObj, y);
     return *this;
@@ -66,11 +85,13 @@ class MXObject {
     return *this;
   }
 
+  lv_coord_t w() { return lv_obj_get_width(_internalObj); }
   MXObject& w(lv_coord_t width) {
     lv_obj_set_width(_internalObj, width);
     return *this;
   }
 
+  lv_coord_t h() { return lv_obj_get_width(_internalObj); }
   MXObject& h(lv_coord_t height) {
     lv_obj_set_height(_internalObj, height);
     return *this;
@@ -92,7 +113,8 @@ class MXObject {
   }
 
   /* Padding */
-  MXObject& p(lv_coord_t top, lv_coord_t right, lv_coord_t bottom, lv_coord_t left) {
+  MXObject& p(lv_coord_t top, lv_coord_t right, lv_coord_t bottom,
+              lv_coord_t left) {
     lv_obj_set_style_pad_top(_internalObj, top, LV_PART_MAIN);
     lv_obj_set_style_pad_right(_internalObj, right, LV_PART_MAIN);
     lv_obj_set_style_pad_bottom(_internalObj, bottom, LV_PART_MAIN);
@@ -143,6 +165,7 @@ class MXObject {
   }
 
   /* Text */
+  const char* text() { return lv_label_get_text(_internalObj); }
   MXObject& text(const char* text) {
     lv_label_set_text(_internalObj, text);
     return *this;
@@ -157,7 +180,8 @@ class MXObject {
   }
 
   MXObject& text_color(uint32_t color) {
-    lv_obj_set_style_text_color(_internalObj, lv_color_hex(color), LV_PART_MAIN);
+    lv_obj_set_style_text_color(_internalObj, lv_color_hex(color),
+                                LV_PART_MAIN);
     return *this;
   }
 
@@ -166,6 +190,7 @@ class MXObject {
     return *this;
   }
 
+  const void* src() { return lv_img_get_src(_internalObj); }
   MXObject& src(const char* src) {
     lv_img_set_src(_internalObj, src);
     return *this;

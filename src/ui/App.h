@@ -2,20 +2,20 @@
 
 #include <mx_ui.h>
 
-#include "ui/scenes/ClockScene.h"
+#include "ui/scenes/WiFiConnectScene.h"
 
-Scene *testScene;
+Scene *scene;
 
 class TipApp : public Application {
  protected:
   void onInit() override {
     Application::onInit();
-    testScene = new ClockScene();
+    scene = new WiFiConnectScene();
   }
 
   void onLaunch() override {
     Application::onLaunch();
 
-    testScene->show();
+    scene->show();
   }
 };

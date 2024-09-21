@@ -14,8 +14,12 @@
 #include "drivers/display/TouchDisplay.h"
 #include "drivers/spiffs-driver/SPIFFSDriver.h"
 
+// HAL Implementations
+#include "wifi/WiFiConnection.h"
+
 TouchDisplay display;
 SPIFFSDriver spiffsDriver;
+WiFiConnection wifiConnection;
 
 void mx_setup();
 void mx_loop();
