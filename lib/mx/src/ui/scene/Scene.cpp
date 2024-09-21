@@ -8,6 +8,10 @@ void Scene::activate() {
   auto activeScene = Application::current()->getActiveScene();
   if (activeScene != nullptr) {
     activeScene->deactivate();
+    if (activeScene->shouldDestroy()) {
+      Application::current()->destroyScene(activeScene);
+    }
+    activeScene = nullptr;
   }
 
   begin();

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stack>
+
 #include "Component.h"
 #include "ui/scene/Scene.h"
 
@@ -20,6 +22,8 @@ class Application : public Component {
  protected:
   void setActiveScene(Scene *scene) { _activeScene = scene; }
 
+  void destroyScene(Scene *scene) { _toBeDestroyedScenes.push(scene); }
+
   virtual void onLaunch() {};
 
   virtual void onUpdate();
@@ -27,6 +31,7 @@ class Application : public Component {
  private:
   static Application *_current;
   Scene *_activeScene = nullptr;
+  std::stack<Scene *> _toBeDestroyedScenes;
 
   friend class Scene;
 };

@@ -4,8 +4,8 @@ class Component {
  public:
   virtual ~Component() { willDestroy(); }
 
-  void begin();
-  void update();
+  virtual void begin();
+  virtual void update();
 
  protected:
   bool initialized = false;

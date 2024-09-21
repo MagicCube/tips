@@ -8,4 +8,10 @@ void Application::onUpdate() {
   if (_activeScene != nullptr) {
     _activeScene->update();
   }
+
+  while (_toBeDestroyedScenes.size() > 0) {
+    auto scene = _toBeDestroyedScenes.top();
+    _toBeDestroyedScenes.pop();
+    delete scene;
+  }
 }
