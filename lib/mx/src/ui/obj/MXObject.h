@@ -196,6 +196,16 @@ class MXObject {
     return *this;
   }
 
+  MXObject& show() {
+    lv_obj_clear_flag(_internalObj, LV_OBJ_FLAG_HIDDEN);
+    return *this;
+  }
+
+  MXObject& hide() {
+    lv_obj_add_flag(_internalObj, LV_OBJ_FLAG_HIDDEN);
+    return *this;
+  }
+
  private:
   lv_obj_t* _internalObj;
 };
